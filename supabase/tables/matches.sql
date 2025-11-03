@@ -1,0 +1,21 @@
+CREATE TABLE matches (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    api_match_id VARCHAR(255) UNIQUE,
+    home_team_id UUID NOT NULL,
+    away_team_id UUID NOT NULL,
+    home_team_name VARCHAR(255) NOT NULL,
+    away_team_name VARCHAR(255) NOT NULL,
+    home_score INTEGER,
+    away_score INTEGER,
+    match_result VARCHAR(20),
+    competition_type VARCHAR(100) NOT NULL,
+    competition_stage VARCHAR(100),
+    importance_multiplier INTEGER NOT NULL,
+    match_date TIMESTAMP NOT NULL,
+    status VARCHAR(50) DEFAULT 'scheduled',
+    has_penalty_shootout BOOLEAN DEFAULT false,
+    penalty_winner VARCHAR(255),
+    processed BOOLEAN DEFAULT false,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
